@@ -45,6 +45,13 @@ steps:
     arguments: '--no-restore --configuration $(buildConfiguration)'
     projects: '**/*.csproj'
 
+- task: SonarQubePrepare@4
+  inputs:
+    SonarQube: 'SonarQube-ACI'
+    scannerMode: 'MSBuild'
+    projectKey: 'AZ400Prep_Space_Game_-_web'
+    projectName: 'Space Game - web'
+
 - task: DotNetCoreCLI@2
   displayName: 'Publish the project - $(buildConfiguration)'
   inputs:
