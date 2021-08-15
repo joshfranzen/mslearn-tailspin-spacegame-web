@@ -12,11 +12,6 @@ variables:
   dotnetSdkVersion: '3.1.100'
 
 steps:    
-
-
-
-
-
 - task: UseDotNet@2
   displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
   inputs:
@@ -50,6 +45,9 @@ steps:
     arguments: '--no-restore --configuration $(buildConfiguration)'
     projects: '**/*.csproj'
 
+- task: WhiteSource@21
+  inputs:
+    projectName: 'mslearn-tailspin-spacegame-web'
 
 - task: DotNetCoreCLI@2
   displayName: 'Publish the project - $(buildConfiguration)'
