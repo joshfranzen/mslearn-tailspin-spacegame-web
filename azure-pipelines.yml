@@ -46,8 +46,7 @@ steps:
     projects: '**/*.csproj'
 
 - task: WhiteSource@21
-  inputs:
-    projectName: 'mslearn-tailspin-spacegame-web'
+
 
 - task: DotNetCoreCLI@2
   displayName: 'Publish the project - $(buildConfiguration)'
