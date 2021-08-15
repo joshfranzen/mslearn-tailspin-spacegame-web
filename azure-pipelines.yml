@@ -11,7 +11,21 @@ variables:
   wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
   dotnetSdkVersion: '3.1.100'
 
-steps:
+steps:    
+- task: DotNetCoreInstaller@0
+  displayName: 'Use .NET Core SDK 2.2.103 For Sonar Cloud'
+  inputs:
+    version: '2.2.103'
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'joshfranzen0407'
+    scannerMode: 'MSBuild'
+    projectKey: 'joshfranzen0407_Space-Game---web'
+    projectName: 'Space Game - web'
+
+
 - task: UseDotNet@2
   displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
   inputs:
@@ -38,13 +52,7 @@ steps:
     command: 'restore'
     projects: '**/*.csproj'
 
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'SonarCloud'
-    organization: 'joshfranzen0407'
-    scannerMode: 'MSBuild'
-    projectKey: 'joshfranzen0407_Space-Game---web'
-    projectName: 'Space Game - web'
+
 
 
 
